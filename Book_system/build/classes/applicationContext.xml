@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xmlns:aop="http://www.springframework.org/schema/aop"
+	     xmlns:tx="http://www.springframework.org/schema/tx"
+	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+	
+	<bean id="LoginController" class="com.pb.web.controller.LoginController">
+		<property name="student" value="StudentMainpage"></property>
+		<property name="staff" value="StaffMainpage"></property>
+		<property name="teacher" value="TeacherMainpage"></property>
+		<property name="error" value="error"></property>
+	</bean>
+	<bean id="modifyStudentAccount" class="com.pb.web.controller.modifyStudentAccount">
+		<property name="successView" value="StudentMainpage"></property>	
+			
+	</bean>
+	<bean id="modifyTeacherAccount" class="com.pb.web.controller.modifyTeacherAccount">
+		<property name="successView" value="TeacherMainpage"></property>	
+			
+	</bean>
+	<bean id="modifyStaffAccount" class="com.pb.web.controller.modifyStaffAccount">
+		<property name="successView" value="StaffMainpage"></property>	
+			
+	</bean>
+	<bean id="refillBook" class="com.pb.web.controller.staffRefill">
+		<property name="successView" value="StaffMainpage"></property>		
+	</bean>
+	<bean id="postBill" class="com.pb.web.controller.staffPostBill">
+				<property name="successView" value="StaffMainpage"></property>
+				<property name="noneView" value="error"></property>
+						
+	</bean>	
+	<bean id="staffCheckOutBook" class="com.pb.web.controller.staffCheckOutBook">
+		<property name="successView" value="StaffMainpage"></property>		
+	</bean>
+	
+	<bean id="teacherCheckOutBook" class="com.pb.web.controller.teacherCheckOutBook">
+		<property name="successView" value="TeacherMainpage"></property>		
+	</bean>
+	
+	<bean id="staffReturnBook" class="com.pb.web.controller.staffReturnBook">
+		<property name="successView" value="StaffMainpage"></property>		
+	</bean>
+	
+	<bean id="staffList" class="com.pb.web.controller.staffList">
+		<property name="showListview" value="ListView"></property>		
+	</bean>
+	
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/login.do">LoginController</prop>
+				<prop key="/modifyStudentAccount.do">modifyStudentAccount</prop>
+				<prop key="/modifyTeacherAccount.do">modifyTeacherAccount</prop>
+				<prop key="/modifyStaffAccount.do">modifyStaffAccount</prop>
+				<prop key="/refillBook.do">refillBook</prop>
+				<prop key="/postBill.do">postBill</prop>
+				<prop key="/staffCheckOutBook.do">staffCheckOutBook</prop>
+				<prop key="/staffReturnBook.do">staffReturnBook</prop>
+				<prop key="/teacherCheckOutBook.do">teacherCheckOutBook</prop>
+				<prop key="/staffList.do">staffList</prop>
+				
+				
+				
+			
+			</props>
+		</property>
+	</bean>
+	
+		
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+</beans>
